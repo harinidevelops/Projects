@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <style>
+        *{
+            text-decoration: none;
+            list-style: none;
+            padding: none;
+        }
+        body{
+            width: 100wh;
+            height: 100vh;
+            background-color: grey;
+            align-items: center;
+            justify-content: center;
+           
+        }
+        .container input{
+            border: none;
+        }
+        .container input :hover{
+            border: none;
+            background-color: aquamarine;
+        }
+        .container{
+            width: 30%;
+            height: 400px;
+            color: white;
+            background-color:skyblue;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            border: 1px solid rgb(11, 109, 147);
+            border-radius: 5px;
+    
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><h2>Todo app</h2>
+        <ul id="todolist">
+    
+        </ul>
+        <div>
+            <input id="addlist" type="text">
+            <button id=""onclick="addtask()">AddList</button>
+        </div>
+        <h3>Completed</h3>
+        <ul id="donelist"></ul></div>
+    
+    <script>
+        let addlist=document.getElementById("addlist")
+        let list=new Array();
+        let todolist=document.getElementById("todolist")
+        let donelist=document.getElementById('donelist')
+
+        function addtask(){
+            if(addlist.value!='') {
+                console.log(list);
+                list.push(addlist.value);
+                let taskId=list.length-1;
+                todolist.innerHTML +='<li id="'+taskId+'"><button onclick="complete('+taskId+')">'+ addlist.value +'</button></li>'
+                addlist.value="";
+             }    
+             
+        }
+        function complete(id){
+            donelist.innerHTML  +='<li>'+list[id]+'</li>';
+            console.log(list[id]);
+            let taskcomplete=document.getElementById(id);
+            taskcomplete.remove();
+        }
+        
+            
+    </script>
+</body>
+</html>
